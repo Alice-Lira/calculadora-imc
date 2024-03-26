@@ -29,7 +29,7 @@ function calcular() {
     errorPeso.value = 'preenchimento obrigatório'
   }
 
-  if (errorIdade.value != '' || errorAltura.value != '' || errorPeso.value != '') {
+  if (errorAltura.value != '' || errorPeso.value != '') {
     return
   }
 
@@ -42,7 +42,7 @@ function calcular() {
     resultado.value = 'peso ideal'
   } else if (imc.value >= 25 & imc.value < 30) {
     resultado.value = 'sobrepeso'
-  } else if (imc.value >= 30 & imc.value < 35) {
+  } else if (imc.value >= 30) {
     resultado.value = 'obesidade'
   }
 }
@@ -92,6 +92,7 @@ function calcular() {
         <button @click="calcular()" class="botao-calcular" type="button">Calcular</button>
 
         <div class="resultado-imc" v-if="imc">
+          <p class="resultado">Resultado</p>
           <p>Seu IMC é de <strong>{{ imc.toFixed(2) }}</strong>. Seu IMC é considerado <strong>{{ resultado }}</strong>!
           </p>
         </div>
@@ -156,7 +157,6 @@ function calcular() {
   width: 49%;
   font-size: 14px;
   border: 1px solid #83cdf5;
-
   color: white;
 }
 
@@ -167,7 +167,7 @@ function calcular() {
 }
 
 .form-input {
-  margin-top: 10px;
+  margin-top: 20px;
 
 }
 
@@ -203,19 +203,33 @@ input[type=number]:focus {
   border-radius: 5px;
   padding: 10px;
   border: 0;
-  font-size: 14px;
+  font-size: 12px;
   cursor: pointer;
-  margin-top: 20px;
+  margin-top: 25px;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
 .botao-calcular:hover {
-  background-color: rgb(0, 86, 133);
+  background-color: #005685;
+}
+
+.resultado {
+  width: 25%;
+  background-color: #2892cb;
+  color: white;
+  border-radius: 10px;
+  padding: 5px;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
 }
 
 .resultado-imc {
-  margin-top: 15px;
+  margin-top: 25px;
   font-size: 14px;
-  text-align: center;
 }
 
 .mensagem-erro {
