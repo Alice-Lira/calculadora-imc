@@ -4,7 +4,6 @@ import { reactive, ref } from 'vue';
 
 const dados = reactive({
   sexo: 'M',
-  idade: null,
   altura: null,
   peso: null
 })
@@ -12,7 +11,6 @@ const dados = reactive({
 const imc = ref(null)
 const resultado = ref("")
 
-const errorIdade = ref("")
 const errorAltura = ref("")
 const errorPeso = ref("")
 
@@ -21,13 +19,8 @@ function alteraSexo(sexo) {
 }
 
 function calcular() {
-  errorIdade.value = ''
   errorAltura.value = ''
   errorPeso.value = ''
-
-  if (dados.idade == null || dados.idade == '') {
-    errorIdade.value = 'preenchimento obrigatório'
-  }
 
   if (dados.altura == null || dados.altura == '') {
     errorAltura.value = 'preenchimento obrigatório'
@@ -81,12 +74,6 @@ function calcular() {
       </div>
 
       <form class="formulario">
-        <div class="form-input">
-          <label for="idade"> Idade</label>
-          <input v-model="dados.idade" type="number" name="idade" placeholder="Ex: 35">
-          <span>anos</span>
-          <p v-if="errorIdade" class="mensagem-erro">{{ errorIdade }}</p>
-        </div>
 
         <div class="form-input">
           <label for="altura"> Altura</label>
